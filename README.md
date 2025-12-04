@@ -26,33 +26,44 @@ RegisterNumber: 212223220042
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.array([1, 2, 3, 4, 5])
-y = np.array([2, 4, 5, 4, 5])
+X_input = input("Enter X values: ")
+Y_input = input("Enter Y values: ")
 
-x_mean = np.mean(x)
-y_mean = np.mean(y)
+X = np.array([int(x) for x in X_input.split()])
+Y = np.array([int(y) for y in Y_input.split()])
+
+X_mean = np.mean(X)
+Y_mean = np.mean(Y)
 
 num = 0
 denom = 0
-for i in range(len(x)):
-    num += (x[i] - x_mean) * (y[i] - y_mean)
-    denom += (x[i] - x_mean)**2
+for i in range(len(X)):
+    num += (X[i] - X_mean) * (Y[i] - Y_mean)
+    denom += (X[i] - X_mean) ** 2
 
 m = num / denom
-b = y_mean - m * x_mean
+b = Y_mean - m * X_mean
 
-y_predicted = m * x + b
-print(y_predicted)
+print('Register number: 212223220042')
+print('Name: KARTHICK KISHORE T')
+print('Slope:', m)
+print('Y-intercept:', b)
 
-print("Slope:",m)
-print("Intercept",b)
+Y_pred = m * X + b
+print('Predicted values:', Y_pred)
 
-plt.scatter(x, y)               
-plt.plot(x, y_predicted, color='red')
+
+plt.scatter(X, Y)
+plt.plot(X, Y_pred, color='green')
+plt.xlabel("X")
+plt.ylabel("Y")
+plt.title("Univariate Linear Regression")
 plt.show()
+
 ```
 ## Output:
-<img width="718" height="582" alt="image" src="https://github.com/user-attachments/assets/8c5bc43f-2be3-46f0-a1f4-33f334754beb" />
+<img width="728" height="718" alt="image" src="https://github.com/user-attachments/assets/16ef4c0d-8ddf-4374-a2e2-cf8c01b7e752" />
+
 
 
 
