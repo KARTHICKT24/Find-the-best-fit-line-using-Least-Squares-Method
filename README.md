@@ -22,30 +22,37 @@ Program to implement univariate Linear Regression to fit a straight line using l
 Developed by: KARTHICK KISHORE T
 RegisterNumber: 212223220042
 ```
-```
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.array([8, 2, 11, 6, 5, 4, 12, 9, 6, 1])
-y = np.array([3, 10, 3, 6, 8, 12, 1, 4, 9, 14])
+x = np.array([1, 2, 3, 4, 5])
+y = np.array([2, 4, 5, 4, 5])
 
-ypred = -1.1 * x + 14.0
+x_mean = np.mean(x)
+y_mean = np.mean(y)
 
-print("x values:")
-print(x)
-print("y values:")
-print(y)
+num = 0
+denom = 0
+for i in range(len(x)):
+    num += (x[i] - x_mean) * (y[i] - y_mean)
+    denom += (x[i] - x_mean)**2
 
-plt.scatter(x, y, color='black', label="Data points")
-plt.plot(x, ypred, color='red', label="Prediction line")
+m = num / denom
+b = y_mean - m * x_mean
 
-plt.xlabel("x")
-plt.ylabel("y")
-plt.legend()
+y_predicted = m * x + b
+print(y_predicted)
+
+print("Slope:",m)
+print("Intercept",b)
+
+plt.scatter(x, y)               
+plt.plot(x, y_predicted, color='red')
 plt.show()
 ```
 ## Output:
-<img width="555" height="426" alt="1" src="https://github.com/user-attachments/assets/9e42a7f1-5b67-40a8-a667-cad00e212c05" />
+<img width="718" height="582" alt="image" src="https://github.com/user-attachments/assets/8c5bc43f-2be3-46f0-a1f4-33f334754beb" />
+
 
 
 
